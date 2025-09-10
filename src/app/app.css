@@ -1,0 +1,20 @@
+/* src/app/app.css */
+.main-layout {
+  display: flex;
+  height: 100vh; /* Ocupa a altura total da tela */
+  overflow: hidden; /* Evita barras de rolagem duplas */
+}
+
+.content-panel {
+  flex-grow: 1; /* Ocupa todo o espaço restante */
+  overflow-y: auto; /* Adiciona barra de rolagem se o conteúdo for maior */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinha o postman-clone no topo */
+}
+
+/* Garante que o postman-clone ocupe o espaço do painel */
+.content-panel > app-postman-clone {
+  width: 100%;
+  height: 100%;
+}

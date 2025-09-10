@@ -1,0 +1,120 @@
+/* src/app/sidebar/sidebar.css */
+:host {
+  display: block;
+  width: 280px; /* Largura fixa da sidebar */
+  background-color: #f5f5f5;
+  border-right: 1px solid #ddd;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.sidebar-header {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar-header button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.btn-new {
+  flex-grow: 1;
+}
+.btn-new .fa-plus {
+  margin-right: 5px;
+}
+
+.quick-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: #555;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+.action-item.active {
+  color: #FF6C37;
+  background-color: #eee;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-bar .fa-search {
+  color: #888;
+  margin-right: 8px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+.collection-list {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.collection-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 5px;
+  font-weight: 500;
+}
+.collection-header:hover {
+  background-color: #eee;
+}
+
+.request-list {
+  padding-left: 20px;
+}
+
+.request-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 5px 5px 15px; /* Alinhar com o ícone da coleção */
+  cursor: pointer;
+  border-radius: 4px;
+}
+.request-item:hover {
+  background-color: #eee;
+}
+
+.method {
+  font-weight: bold;
+  font-size: 12px;
+  width: 45px;
+  text-align: left;
+}
+
+.method-get { color: #28a745; }
+.method-post { color: #ffc107; }
+.method-put { color: #007bff; }
+.method-delete { color: #dc3545; }

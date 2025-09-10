@@ -1,0 +1,42 @@
+<div class="sidebar-container">
+  <div class="sidebar-header">
+    <button class="btn-new"><i class="fas fa-plus"></i> New</button>
+    <button class="btn-import">Import</button>
+  </div>
+
+  <div class="quick-actions">
+    <div class="action-item active">
+      <i class="fas fa-folder-open"></i>
+      <span>Collections</span>
+    </div>
+    <div class="action-item">
+      <i class="fas fa-globe"></i>
+      <span>Environments</span>
+    </div>
+    <div class="action-item">
+      <i class="fas fa-history"></i>
+      <span>History</span>
+    </div>
+  </div>
+
+  <div class="search-bar">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Search collections">
+  </div>
+
+  <div class="collection-list">
+    <div *ngFor="let collection of collections" class="collection-item">
+      <div class="collection-header" (click)="toggleCollection(collection)">
+        <i class="fas" [ngClass]="{'fa-chevron-down': collection.isOpen, 'fa-chevron-right': !collection.isOpen}"></i>
+        <span>{{ collection.name }}</span>
+      </div>
+
+      <div class="request-list" *ngIf="collection.isOpen">
+        <div *ngFor="let request of collection.requests" class="request-item">
+          <span class="method" [ngClass]="'method-' + request.method.toLowerCase()">{{ request.method }}</span>
+          <span class="name">{{ request.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
