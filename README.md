@@ -59,10 +59,11 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 Alterações futuras:
-- Funções (Save, Save as, share, cookies, copy link, send and download)
-- Corrigir o response para ficar fixo (Separar da div)
+- Funções (Save, Save as, share, copy link, send and download)
+- Corrigir o response: criar um componente com suas devidas funcionalidades
+- Response e Sidebar serem dinâmicas
 - Restante das paginas (Body [binary, GraphQL], Script, Settings)
-- Send mudar de cor ao tempo de enviar
+- Send: mudar de cor ao tempo de enviar
   Opcionais:
   - Localização de navegação
   - Side bar hidden (botã hamburguer)
