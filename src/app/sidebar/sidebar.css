@@ -2,13 +2,13 @@
 :host {
   display: block;
   width: 280px; /* Largura fixa da sidebar */
-  background-color: #f5f5f5;
-  border-right: 1px solid #ddd;
+  background-color: #104C9E;
   height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   font-size: 14px;
+  border-right: solid 5px #F99C1C;
 }
 
 .sidebar-header {
@@ -21,9 +21,11 @@
 .sidebar-header button {
   padding: 8px 12px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid #F99C1C;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #F99C1C;
+  color: white;
+  font-weight: bold;
 }
 
 .btn-new {
@@ -37,7 +39,7 @@
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 
 .action-item {
@@ -46,20 +48,20 @@
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  color: #555;
+  color: #f3f2f2;
   padding: 5px 10px;
   border-radius: 4px;
 }
 .action-item.active {
-  color: #FF6C37;
-  background-color: #eee;
+  color: white;
+  background-color: #F99C1C;
 }
 
 .search-bar {
   display: flex;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  background-color: white;
 }
 
 .search-bar .fa-search {
@@ -86,6 +88,7 @@
   cursor: pointer;
   padding: 5px;
   font-weight: 500;
+  background-color: #2f70cc;
 }
 .collection-header:hover {
   background-color: #eee;
@@ -101,10 +104,10 @@
   gap: 8px;
   padding: 5px 5px 5px 15px; /* Alinhar com o ícone da coleção */
   cursor: pointer;
-  border-radius: 4px;
+  background-color: #508ce0;
 }
 .request-item:hover {
-  background-color: #eee;
+  background-color: #96b1d3;
 }
 
 .method {
@@ -114,7 +117,7 @@
   text-align: left;
 }
 
-.method-get { color: #28a745; }
+.method-get { color: #006b19; }
 .method-post { color: #ffc107; }
-.method-put { color: #007bff; }
+.method-put { color: #002853; }
 .method-delete { color: #dc3545; }

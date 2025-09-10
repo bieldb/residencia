@@ -25,7 +25,7 @@
         }
         
         .header {
-            background: #FF6C37;
+            background: #003680;
             color: white;
             padding: 15px 20px;
             display: flex;
@@ -70,7 +70,7 @@
             border: 1px solid #ddd;
             border-radius: 4px 0 0 4px;
             font-weight: bold;
-            color: #FF6C37;
+            color: #003680;
             cursor: pointer;
         }
         
@@ -85,7 +85,7 @@
         
         .send-button {
             padding: 10px 20px;
-            background: #FF6C37;
+            background: #F99C1C;
             color: white;
             border: none;
             border-radius: 0 4px 4px 0;
@@ -95,7 +95,7 @@
         }
         
         .send-button:hover {
-            background: #E55C2B;
+            background: #9e5c00;
         }
         
         .tabs {
@@ -116,15 +116,15 @@
         }
         
         .tab.active {
-            color: #FF6C37;
-            background: white;
+            color: #ffffff;
+            background: #003680;
         }
         
         .tab-indicator {
             position: absolute;
             bottom: 0;
-            height: 2px;
-            background: #FF6C37;
+            height: 5px;
+            background: #F99C1C;
             transition: all 0.3s ease;
         }
         
@@ -176,12 +176,12 @@
         }
         
         .button-icon:hover {
-            color: #FF6C37;
+            color: #F99C1C;
         }
         
         .add-row {
             margin-top: 15px;
-            color: #FF6C37;
+            color: #F99C1C;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
@@ -208,11 +208,11 @@
         }
         
         .auth-type:hover {
-            border-color: #FF6C37;
+            border-color: #F99C1C;
         }
         
         .auth-type.active {
-            border-color: #FF6C37;
+            border-color: #F99C1C;
             background: rgba(255, 108, 55, 0.05);
         }
         
@@ -232,12 +232,12 @@
         }
         
         .body-type:hover {
-            border-color: #FF6C37;
+            border-color: #F99C1C;
         }
         
         .body-type.active {
-            border-color: #FF6C37;
-            background-color: #FF6C37;
+            border-color: #F99C1C;
+            background-color: #F99C1C;
             color: white;
         }
         
