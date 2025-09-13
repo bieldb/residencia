@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { PostmanClone } from './postman-clone/postman-clone';
-import { Sidebar } from './sidebar/sidebar';
+import { Sidebar } from './components/sidebar/sidebar';
+import { PostmanCloneComponent } from './postman-clone/postman-clone';
 
 @Component({
   selector: 'app-root',
-  imports: [PostmanClone, Sidebar],
+  imports: [ Sidebar, PostmanCloneComponent ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

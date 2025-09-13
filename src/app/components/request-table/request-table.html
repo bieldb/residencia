@@ -1,0 +1,246 @@
+ <div class="tabs">
+    <div class="tab-indicator" [ngStyle]="tabIndicatorStyle"></div>
+    <div class="tab" [ngClass]="{'active': activeTab === 'params'}" (click)="setActiveTab('params', $event)">Params</div>
+    <div class="tab" [ngClass]="{'active': activeTab === 'authorization'}" (click)="setActiveTab('authorization', $event)">Authorization</div>
+    <div class="tab" [ngClass]="{'active': activeTab === 'headers'}" (click)="setActiveTab('headers', $event)">Headers ({{headers.length}})</div>
+    <div class="tab" [ngClass]="{'active': activeTab === 'body'}" (click)="setActiveTab('body', $event)">Body</div>
+    <div class="tab" [ngClass]="{'active': activeTab === 'scripts'}" (click)="setActiveTab('scripts', $event)">Scripts</div>
+    <div class="tab" [ngClass]="{'active': activeTab === 'settings'}" (click)="setActiveTab('settings', $event)">Settings</div>
+  </div>
+
+  <div class="tab-content">
+<div class="tab-pane" [ngClass]="{'active': activeTab === 'params'}" *ngIf="activeTab === 'params'">
+  
+  <div class="table-header-row">
+      <div class="table-header-key">Key</div>
+      <div class="table-header-value" *ngIf="showParamValue">Value</div>
+      <div class="table-header-description" *ngIf="showParamDescription">Description</div>
+      <div class="table-header-actions">
+          <div class="bulk-edit-container">
+              <button class="button-icon" title="View more actions" (click)="toggleParamMenu($event)">
+                  <i class="fas fa-ellipsis-h"></i>
+              </button>
+              <span>Bulk Edit</span>
+
+              <div class="dropdown-menu" #paramMenu *ngIf="isParamMenuOpen">
+                  <label>Show columns</label>
+                  <div class="dropdown-item">
+                      <input type="checkbox" [(ngModel)]="showParamValue"> Value
+                  </div>
+                  <div class="dropdown-item">
+                      <input type="checkbox" [(ngModel)]="showParamDescription"> Description
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="param-row" *ngFor="let param of params; let i = index">
+      <input type="text" placeholder="Key" [(ngModel)]="param.key">
+      <input *ngIf="showParamValue" type="text" placeholder="Value" [(ngModel)]="param.value">
+      <input *ngIf="showParamDescription" type="text" placeholder="Description" [(ngModel)]="param.description">
+      <div class="param-actions">
+          <button class="button-icon" (click)="removeParam(i)"><i class="fas fa-trash"></i></button>
+      </div>
+  </div>
+  
+  <div class="param-row">
+      <input type="text" placeholder="Key" ngModel (ngModelChange)="newParam.key = $event">
+      <input *ngIf="showParamValue" type="text" placeholder="Value" ngModel (ngModelChange)="newParam.value = $event">
+      <input *ngIf="showParamDescription" type="text" placeholder="Description" ngModel (ngModelChange)="newParam.description = $event">
+      <div class="param-actions">
+          <button class="button-icon" (click)="addParam()"><i class="fas fa-plus"></i></button>
+      </div>
+  </div>
+</div>
+    
+<div class="tab-pane" [ngClass]="{'active': activeTab === 'authorization'}" *ngIf="activeTab === 'authorization'">
+  <h3>Auth Type</h3>
+  
+  <select [(ngModel)]="authType" class="method-select" style="width: 100%; margin-bottom: 20px;">
+    <option *ngFor="let auth of authTypes" [value]="auth.value">
+      {{ auth.label }}
+    </option>
+  </select>
+
+  <div *ngIf="authType === 'no-auth'">
+    <p>This request does not use any authorization. 😊</p>
+  </div>
+  
+  <div *ngIf="authType === 'bearer'" style="margin-top: 20px;">
+    <label>Token</label>
+    <input type="text" placeholder="Enter token" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+  </div>
+  
+  <div *ngIf="authType === 'basic'" style="margin-top: 20px;">
+    <label>Username</label>
+    <input type="text" placeholder="Username" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px;">
+    
+    <label>Password</label>
+    <input type="password" placeholder="Password" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+  </div>
+</div>
+<div class="tab-pane" [ngClass]="{'active': activeTab === 'headers'}" *ngIf="activeTab === 'headers'">
+<h4>Headers</h4>  
+  <div class="table-header-row">
+    <div class="table-header-key">Key</div>
+    <div class="table-header-value" *ngIf="showHeaderValue">Value</div>
+    <div class="table-header-description" *ngIf="showHeaderDescription">Description</div>
+    <div class="table-header-actions">
+        <div class="bulk-edit-container">
+            <button class="button-icon" title="View more actions" (click)="toggleHeaderMenu($event)">
+                <i class="fas fa-ellipsis-h"></i>
+            </button>
+            <span>Bulk Edit</span>
+
+            <div class="dropdown-menu" #headerMenu *ngIf="isHeaderMenuOpen">
+                <label>Show columns</label>
+                <div class="dropdown-item">
+                    <input type="checkbox" [(ngModel)]="showHeaderValue"> Value
+                </div>
+                <div class="dropdown-item">
+                    <input type="checkbox" [(ngModel)]="showHeaderDescription"> Description
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="header-row" *ngFor="let header of headers; let i = index">
+      <input type="text" placeholder="Key" [(ngModel)]="header.key">
+      <input *ngIf="showHeaderValue" type="text" placeholder="Value" [(ngModel)]="header.value">
+      <input *ngIf="showHeaderDescription" type="text" placeholder="Description" [(ngModel)]="header.description">
+      <div class="header-actions-row">
+          <button class="button-icon" (click)="removeHeader(i)"><i class="fas fa-trash"></i></button>
+      </div>
+  </div>
+
+  <div class="header-row">
+      <input type="text" placeholder="Key" ngModel (ngModelChange)="newHeader.key = $event">
+      <input *ngIf="showHeaderValue" type="text" placeholder="Value" ngModel (ngModelChange)="newHeader.value = $event">
+      <input *ngIf="showHeaderDescription" type="text" placeholder="Description" ngModel (ngModelChange)="newHeader.description = $event">
+      <div class="header-actions-row">
+          <button class="button-icon" (click)="addHeader()"><i class="fas fa-plus"></i></button>
+      </div>
+  </div>
+</div>
+<div class="tab-pane" [ngClass]="{'active': activeTab === 'body'}" *ngIf="activeTab === 'body'">
+  
+  <div class="body-types">
+      <div *ngFor="let type of bodyTypes" 
+           class="body-type" 
+           [ngClass]="{'active': bodyType === type}" 
+           (click)="bodyType = type">
+          {{ type }}
+      </div>
+  </div>
+  
+  <div *ngIf="bodyType === 'none'">
+      <p style="text-align: center; color: #888; margin-top: 40px;">This request does not have a body</p>
+  </div>
+  
+  <div *ngIf="bodyType === 'form-data'">
+      <div class="table-header-row">
+        <div class="table-header-key">Key</div>
+        <div class="table-header-value" *ngIf="showFormDataValue">Value</div>
+        <div class="table-header-description" *ngIf="showFormDataDescription">Description</div>
+        <div class="table-header-actions">
+            <div class="bulk-edit-container">
+                <button class="button-icon" title="View more actions" (click)="toggleFormDataMenu($event)">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+                <span>Bulk Edit</span>
+                <div class="dropdown-menu" #formDataMenu *ngIf="isFormDataMenuOpen">
+                    <label>Show columns</label>
+                    <div class="dropdown-item"><input type="checkbox" [(ngModel)]="showFormDataValue"> Value</div>
+                    <div class="dropdown-item"><input type="checkbox" [(ngModel)]="showFormDataDescription"> Description</div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="param-row" *ngFor="let row of formData; let i = index">
+          <div class="key-field-container">
+              <input type="text" placeholder="Key" [(ngModel)]="row.key">
+              <select class="type-selector" [(ngModel)]="row.type">
+                  <option>Text</option>
+                  <option>File</option>
+              </select>
+          </div>
+          <div *ngIf="showFormDataValue" class="value-field-container">
+              <input *ngIf="row.type === 'Text'" type="text" placeholder="Value" [(ngModel)]="row.value">
+              <input *ngIf="row.type === 'File'" type="file" (change)="onFileSelected($event, i)">
+          </div>
+          <input *ngIf="showFormDataDescription" type="text" placeholder="Description" [(ngModel)]="row.description">
+          <div class="param-actions">
+              <button class="button-icon" (click)="removeFormDataRow(i)"><i class="fas fa-trash"></i></button>
+          </div>
+      </div>
+
+      <div class="param-row">
+          <div class="key-field-container">
+              <input type="text" placeholder="Key" [(ngModel)]="newFormDataRow.key">
+              <select class="type-selector" [(ngModel)]="newFormDataRow.type">
+                  <option>Text</option>
+                  <option>File</option>
+              </select>
+          </div>
+          <div *ngIf="showFormDataValue" class="value-field-container">
+              <input *ngIf="newFormDataRow.type === 'Text'" type="text" placeholder="Value" [(ngModel)]="newFormDataRow.value">
+              <input *ngIf="newFormDataRow.type === 'File'" type="file">
+          </div>
+          <input *ngIf="showFormDataDescription" type="text" placeholder="Description" [(ngModel)]="newFormDataRow.description">
+          <div class="param-actions">
+              <button class="button-icon" (click)="addFormDataRow()"><i class="fas fa-plus"></i></button>
+          </div>
+      </div>
+  </div>
+
+  <div *ngIf="bodyType === 'x-www-form-urlencoded'">
+    <div class="table-header-row">
+      <div class="table-header-key">Key</div>
+      <div class="table-header-value" *ngIf="showUrlencodedValue">Value</div>
+      <div class="table-header-description" *ngIf="showUrlencodedDescription">Description</div>
+      <div class="table-header-actions">
+          <div class="bulk-edit-container">
+              <button class="button-icon" title="View more actions" (click)="toggleUrlencodedMenu($event)">
+                  <i class="fas fa-ellipsis-h"></i>
+              </button>
+              <span>Bulk Edit</span>
+              <div class="dropdown-menu" #urlencodedMenu *ngIf="isUrlencodedMenuOpen">
+                  <label>Show columns</label>
+                  <div class="dropdown-item"><input type="checkbox" [(ngModel)]="showUrlencodedValue"> Value</div>
+                  <div class="dropdown-item"><input type="checkbox" [(ngModel)]="showUrlencodedDescription"> Description</div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="param-row" *ngFor="let row of urlencodedData; let i = index">
+        <input type="text" placeholder="Key" [(ngModel)]="row.key">
+        <input *ngIf="showUrlencodedValue" type="text" placeholder="Value" [(ngModel)]="row.value">
+        <input *ngIf="showUrlencodedDescription" type="text" placeholder="Description" [(ngModel)]="row.description">
+        <div class="param-actions">
+            <button class="button-icon" (click)="removeUrlencodedRow(i)"><i class="fas fa-trash"></i></button>
+        </div>
+    </div>
+    
+    <div class="param-row">
+        <input type="text" placeholder="Key" [(ngModel)]="newUrlencodedRow.key">
+        <input *ngIf="showUrlencodedValue" type="text" placeholder="Value" [(ngModel)]="newUrlencodedRow.value">
+        <input *ngIf="showUrlencodedDescription" type="text" placeholder="Description" [(ngModel)]="newUrlencodedRow.description">
+        <div class="param-actions">
+            <button class="button-icon" (click)="addUrlencodedRow()"><i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+  </div>
+  
+  <div *ngIf="bodyType === 'raw'">
+      <textarea [(ngModel)]="requestBody" 
+                placeholder="Request body" 
+                rows="8" 
+                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: monospace;"></textarea>
+  </div>
+</div>
+    
+    </div>

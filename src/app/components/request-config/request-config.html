@@ -1,0 +1,16 @@
+<div class="request-bar">
+  <select class="method-select" [(ngModel)]="requestMethod" 
+          (ngModelChange)="requestMethodChange.emit($event)">
+    <option>GET</option>
+    <option>POST</option>
+    <option>PUT</option>
+    <option>PATCH</option>
+    <option>DELETE</option>
+    <option>HEAD</option>
+    <option>OPTIONS</option>
+  </select>
+  <input type="text" class="url-input" placeholder="Enter URL"
+         [(ngModel)]="requestUrl" 
+         (ngModelChange)="requestUrlChange.emit($event)">
+  <button class="send-button" (click)="onSend()">Send</button>
+</div>
