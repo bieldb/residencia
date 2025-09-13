@@ -1,20 +1,35 @@
-/* src/app/app.css */
+html, body, app-root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* remove scroll global */
+}
+
 .main-layout {
   display: flex;
-  height: 100vh; /* Ocupa a altura total da tela */
-  overflow: hidden; /* Evita barras de rolagem duplas */
+  height: 100vh;   /* ocupa tela inteira */
+  overflow: hidden; /* garante que não crie barra lateral */
 }
 
-.content-panel {
-  flex-grow: 1; /* Ocupa todo o espaço restante */
-  overflow-y: auto; /* Adiciona barra de rolagem se o conteúdo for maior */
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Alinha o postman-clone no topo */
-}
-
-/* Garante que o postman-clone ocupe o espaço do painel */
-.content-panel > app-postman-clone {
-  width: 100%;
+/* Sidebar fixo à esquerda */
+.main-layout > app-sidebar {
+  flex: 0 0 260px; /* largura fixa */
   height: 100%;
+  overflow-y: auto; /* rolagem interna se precisar */
+}
+
+/* Painel central (postman-clone) */
+.content-panel {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* ESSENCIAL p/ scroll interno funcionar */
+  overflow: hidden; /* não deixa vazar pro body */
+}
+
+/* O postman-clone vai se adaptar ao painel */
+.content-panel > app-postman-clone {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
