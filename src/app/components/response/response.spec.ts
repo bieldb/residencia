@@ -1,23 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
 
-import { Response } from './response';
+@Component({
+  selector: 'app-response',
+  templateUrl: './response.html',
+  styleUrls: ['./response.css']
+})
+export class ResponseComponent {
+  responseBody: any = '';
 
-describe('Response', () => {
-  let component: Response;
-  let fixture: ComponentFixture<Response>;
+  // Lista de formatos
+  formats = ['json','xml','html','javascript','raw','hex','base64'];
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Response]
-    })
-    .compileComponents();
+  // Formato selecionado (valor inicial)
+  format: string = 'json';   // <-- adicionar isto
 
-    fixture = TestBed.createComponent(Response);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  // Aba selecionada
+  tab: string = 'body';
+}

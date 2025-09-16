@@ -1,9 +1,15 @@
-<div class="response-section">
-  <div class="response-header">
-    <div class="response-title">Response</div>
-    <div class="response-history">History</div>
+<div class="response-header">
+  <div class="tabs">
+    <button [class.active]="tab === 'body'" (click)="tab = 'body'">Body</button>
+    <button [class.active]="tab === 'cookies'" (click)="tab = 'cookies'">Cookies</button>
+    <button [class.active]="tab === 'headers'" (click)="tab = 'headers'">Headers</button>
   </div>
-  <div class="response-content">
-    {{responseMessage}}
+
+  <!-- só aparece na aba Body -->
+  <div class="format-selector" *ngIf="tab === 'body'">
+    <select [(ngModel)]="format">
+      <option *ngFor="let f of formats" [value]="f">{{ f.toUpperCase() }}</option>
+    </select>
   </div>
 </div>
+

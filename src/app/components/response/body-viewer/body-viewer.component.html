@@ -1,0 +1,15 @@
+<div class="format-selector">
+  <button class="dropdown-btn" type="button" (click)="toggleDropdown()">
+    <span class="icon">{{ getFormatIcon(format) }}</span>
+    <span class="label">{{ format | uppercase }}</span>
+    <span class="arrow">▾</span>
+  </button>
+
+  <div class="dropdown-menu" *ngIf="dropdownOpen">
+    <div *ngFor="let f of formats" (click)="setFormat(f)">
+      {{ f | uppercase }}
+    </div>
+  </div>
+</div>
+
+<pre *ngIf="getFormattedBody()">{{ getFormattedBody() }}</pre>
