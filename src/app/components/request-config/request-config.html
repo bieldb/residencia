@@ -10,7 +10,22 @@
     <option>OPTIONS</option>
   </select>
   <input type="text" class="url-input" placeholder="Enter URL"
-         [(ngModel)]="requestUrl" 
-         (ngModelChange)="requestUrlChange.emit($event)">
-  <button class="send-button" (click)="onSend()">Send</button>
+       [(ngModel)]="requestUrl" 
+       (ngModelChange)="requestUrlChange.emit($event)">
+
+<div class="send-group">
+  <button class="send-button"
+          [ngClass]="{ 'cancel-button': isSending }"
+          (click)="onSendClick()">
+    {{ isSending ? 'Cancel' : 'Send' }}
+  </button>
+
+  <button *ngIf="!isSending"
+          class="dropdown-toggle"
+          (click)="toggleDropdown()">v</button>
+
+  <div class="dropdown-menu" *ngIf="dropdownOpen">
+    <button (click)="onSendAndDownload()">Send and Download</button>
+  </div>
+</div>
 </div>

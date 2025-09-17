@@ -365,3 +365,71 @@
     cursor: pointer;
     font-size: 12px;
 }
+.send-group {
+  position: relative;
+  display: inline-flex;
+}
+
+.send-button,
+.dropdown-toggle {
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.send-button {
+  background-color: #F99C1C;
+  color: white;
+  border: none;
+  border-right: 1px solid #ddd; /* linha que divide send e v */
+  border-radius: 4px 0 0 4px;
+  padding: 8px 16px;
+  font-weight: 500;
+  
+}
+
+.dropdown-toggle {
+  background-color: #F99C1C;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  padding: 8px 12px;
+}
+
+.dropdown-toggle:hover,
+.send-button:hover {
+  background-color: #F99C1C;
+}
+
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #222;
+  border-radius: 4px;
+  min-width: 160px;
+  z-index: 10;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background: #333;
+}
+
+.cancel-button {
+  background-color: #6c757d !important;
+  color: white !important;
+  border-radius: 4px !important; /* arredonda todos os cantos */
+  border-right: none !important; /* remove a linha divisória */
+}
