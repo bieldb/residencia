@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';  
 import { FormsModule } from '@angular/forms'; 
-import { BodyViewerComponent } from './body-viewer/body-viewer.component';
+
 
 @Component({
   selector: 'app-response',
   standalone: true,
-  imports: [CommonModule, FormsModule, BodyViewerComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './response.html',
   styleUrls: ['./response.css']
 })

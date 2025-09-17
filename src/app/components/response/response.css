@@ -26,9 +26,9 @@
 }
 
 .tabs button.active {
-  background: #0052cc; 
-  color: white;
-  font-weight: 500;
+  background: #F99C1C; 
+  color: #fff;
+  font-weight: bold;
 }
 
 .format-selector {

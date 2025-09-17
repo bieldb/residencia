@@ -6,6 +6,7 @@ import { HeaderComponent } from '../components/header/header';
 import { RequestConfigComponent } from '../components/request-config/request-config';
 import { RequestTable } from '../components/request-table/request-table';
 import { ResponseComponent } from '../components/response/response';
+import { TabNavigationComponent } from '../components/tab-navigation/tab-navigation';
 
 @Component({
   selector: 'app-postman-clone',
@@ -16,7 +17,8 @@ import { ResponseComponent } from '../components/response/response';
     HeaderComponent,
     RequestConfigComponent,
     RequestTable,
-    ResponseComponent
+    ResponseComponent,
+    TabNavigationComponent
 ],
   templateUrl: './postman-clone.html',
   styleUrls: ['./postman-clone.css']
@@ -37,4 +39,24 @@ export class PostmanCloneComponent {
   onSave() {
     console.log('Saved request!');
   }
+
+  tabs = [
+  { id: '1', title: 'Get data' },
+  { id: '2', title: 'Post data' }
+];
+
+activeTab = 0;
+
+onTabSelected(index: number) {
+  this.activeTab = index;
+  // aqui você troca request/response de acordo com a aba
+}
+
+onTabClosed(index: number) {
+  this.tabs.splice(index, 1);
+  if (this.activeTab >= this.tabs.length) {
+    this.activeTab = this.tabs.length - 1;
+  }
+}
+
 }
