@@ -21,3 +21,4 @@ describe('RequestConfig', () => {
     expect(component).toBeTruthy();
   });
 });
+
