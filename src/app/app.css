@@ -9,6 +9,7 @@ html, body, app-root {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  font-family: Arial;
 }
 
 .main-layout > app-sidebar {
@@ -32,7 +33,7 @@ html, body, app-root {
 
 .sidebar-toggle-btn {
   position: fixed;
-  top: 5.85vh;
+  top: 62px;
   left: 3px;
   z-index: 100;
   width: 45px;

@@ -58,9 +58,3 @@ export class Sidebar {
     }
   }
 }
-
-  // Função para abrir/fechar uma coleção
-  toggleCollection(collection: any) {
-    collection.isOpen = !collection.isOpen;
-  }
-}

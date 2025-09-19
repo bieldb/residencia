@@ -9,6 +9,7 @@
   position: relative;
   transition: border-right-width 0.4s ease-in-out;
   overflow: hidden; 
+  
 }
 
 .sidebar-container {
@@ -33,7 +34,6 @@
   display: flex;
   gap: 10px;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
 }
 
 .sidebar-header button {
@@ -56,8 +56,8 @@
 .quick-actions {
   display: flex;
   justify-content: space-around;
-  padding: 10px 0;
-  border-top: 1px solid #ddd;
+  padding: 10px;
+  padding-bottom: 20px;
 }
 
 .action-item {
@@ -96,6 +96,7 @@
 
 .collection-list {
   padding: 10px;
+  padding-top: 20px;
   flex-grow: 1;
 }
 
@@ -107,7 +108,7 @@
   padding: 5px;
   font-weight: 500;
   background-color: #2f70cc;
-  color: white;
+  color: black;
 }
 .collection-header:hover {
   background-color: #265ca7;
@@ -124,7 +125,7 @@
   padding: 5px 5px 5px 15px;
   cursor: pointer;
   background-color: #508ce0;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .request-item:hover {
   background-color: #4176c7;
@@ -137,7 +138,7 @@
   text-align: left;
 }
 
-.method-get { color: #c8ffce; }
-.method-post { color: #f0f0c0; }
-.method-put { color: #c2faff; }
-.method-delete { color: #ffc4c4; }
+.method-get { color: #006b19; }
+.method-post { color: #ffc107; }
+.method-put { color: #002853; }
+.method-delete { color: #dc3545; }
