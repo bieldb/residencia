@@ -1,3 +1,4 @@
+// Rapaziada cometi um erro aqui e coloquei esse arquivo dentro da pasta da sidebar e não sei como tira ele, ele precisa é estar na pasta app. Alguém dá um help depois por favor.
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
