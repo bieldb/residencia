@@ -1,15 +1,33 @@
-/* src/app/sidebar/sidebar.css */
 :host {
   display: block;
-  width: 280px; /* Largura fixa da sidebar */
   background-color: #104C9E;
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
   font-size: 14px;
   border-right: solid 5px #F99C1C;
+  position: relative;
+  transition: border-right-width 0.4s ease-in-out;
+  overflow: hidden; 
 }
+
+.sidebar-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  min-width: 180px; 
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 9;
+}
+
 
 .sidebar-header {
   display: flex;
@@ -89,9 +107,10 @@
   padding: 5px;
   font-weight: 500;
   background-color: #2f70cc;
+  color: white;
 }
 .collection-header:hover {
-  background-color: #eee;
+  background-color: #265ca7;
 }
 
 .request-list {
@@ -102,12 +121,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 5px 5px 5px 15px; /* Alinhar com o ícone da coleção */
+  padding: 5px 5px 5px 15px;
   cursor: pointer;
   background-color: #508ce0;
+  color: white;
 }
 .request-item:hover {
-  background-color: #96b1d3;
+  background-color: #4176c7;
 }
 
 .method {
@@ -117,7 +137,7 @@
   text-align: left;
 }
 
-.method-get { color: #006b19; }
-.method-post { color: #ffc107; }
-.method-put { color: #002853; }
-.method-delete { color: #dc3545; }
+.method-get { color: #c8ffce; }
+.method-post { color: #f0f0c0; }
+.method-put { color: #c2faff; }
+.method-delete { color: #ffc4c4; }
