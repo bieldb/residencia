@@ -1,35 +1,87 @@
 html, body, app-root {
   height: 100%;
   margin: 0;
-  overflow: hidden; /* remove scroll global */
+  overflow: hidden;
 }
 
 .main-layout {
   display: flex;
-  height: 100vh;   /* ocupa tela inteira */
-  overflow: hidden; /* garante que não crie barra lateral */
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Sidebar fixo à esquerda */
 .main-layout > app-sidebar {
-  flex: 0 0 260px; /* largura fixa */
+  flex: 0 0 var(--sidebar-width, 280px);
   height: 100%;
-  overflow-y: auto; /* rolagem interna se precisar */
+  transition: flex-basis 0.4s ease-in-out;
 }
 
-/* Painel central (postman-clone) */
+.main-layout:not(.sidebar-open) > app-sidebar {
+  flex-basis: 0;
+  border-right-width: 0;
+}
+
 .content-panel {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  min-height: 0; /* ESSENCIAL p/ scroll interno funcionar */
-  overflow: hidden; /* não deixa vazar pro body */
+  min-height: 0;
+  overflow: hidden;
 }
 
-/* O postman-clone vai se adaptar ao painel */
-.content-panel > app-postman-clone {
-  flex: 1 1 auto;
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 5.85vh;
+  left: 3px;
+  z-index: 100;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  background-color: #104C9E;
+  color: white;
+  border: 1px solid #F99C1C;
+  border-width: 3px;
+  font-size: 20px;
   display: flex;
-  flex-direction: column;
-  min-height: 0;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease-in-out;
+}
+
+.sidebar-toggle-btn:hover {
+  background-color: #1a5bbb;
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* --- MODO DESKTOP --- */
+@media (min-width: 768px) {
+  .main-layout.sidebar-open .sidebar-toggle-btn {
+    transform: translateX(var(--sidebar-width, 280px));
+  }
+}
+
+/* --- MODO MOBILE --- */
+@media (max-width: 767px) {
+  .main-layout.sidebar-open > app-sidebar {
+    position: absolute;
+    z-index: 2;
+    flex-basis: 280px;
+  }
+  
+  .main-layout.sidebar-open .overlay {
+    display: block;
+  }
 }
